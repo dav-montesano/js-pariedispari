@@ -1,5 +1,5 @@
 console.log(document);
-//select of the button in the dom
+//PALINDROMA CHECK
 const submitButton = document.querySelector(`#submitButton`);
 submitButton.addEventListener(`click`, function(event) {
     event.preventDefault()
@@ -73,3 +73,49 @@ submitButton.addEventListener(`click`, function(event) {
         }, 1500);    
     }
 })
+
+//PARI E DISPARI CHECK
+//listen the button on the pari e dispari check
+const submitButtonPlay = document.querySelector(`#submitButton-play`);
+submitButtonPlay.addEventListener(`click`, function(event) {
+    event.preventDefault()
+    const spinnerPlay = submitButtonPlay.querySelector(`#spinner-play`)
+    const statusPlayBtn = submitButtonPlay.querySelector(`.status-play`)
+    const resultWinPlay = document.querySelector(`#result-card-success-play`)
+    const resultWinMessage = document.querySelector(`#result-success-play`)
+    const resultLostPlay = document.querySelector(`#result-card-fail-play`)
+    const resultLostMessage = document.querySelector(`#result-fail-play`)
+    const originalStatusPlay = statusPlayBtn.innerHTML
+    resultWinPlay.classList.add(`d-none`)
+    resultLostPlay.classList.add(`d-none`)
+    spinnerPlay.classList.toggle(`d-none`)
+    statusPlayBtn.innerHTML=`Loading`
+    submitButtonPlay.disabled= true;
+
+    //read the selection between pari and dispari from user
+    const selectedRadioPlay = document.querySelector(`input[name="radioPariDispari"]:checked`)
+    console.log(`User gioca: ${selectedRadioPlay.value}`); // Mostra il valore ("Pari" o "Dispari")
+    //assign the left selection between pari e dispari to the computer
+    let computerPlay;
+    if (selectedRadioPlay === `Pari`) {
+        computerPlay = `Dispari`;
+    } else {
+        computerPlay = `Pari`;
+    }
+    console.log(`Computer gioca: ${computerPlay}`);
+
+    //read the value enter by the user
+    const selectedUserNumber = document.querySelector(`#select-number-play`)
+    console.log(`Il numero scelto dal user è: ${selectedUserNumber.value}`)
+    //generate and save a random number by the computer
+    const computerNumber = 
+
+
+})
+
+
+
+//generate and save a random number by the computer
+//sum the value input from user to the one randome genearated by computer
+//check if the sum result is pari or dispari
+//assign the winner based on the pari-dispari selection (user VS computer)
