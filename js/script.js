@@ -97,10 +97,10 @@ submitButtonPlay.addEventListener(`click`, function(event) {
     console.log(`User gioca: ${selectedRadioPlay.value}`); // Mostra il valore ("Pari" o "Dispari")
     //assign the left selection between pari e dispari to the computer
     let computerPlay;
-    if (selectedRadioPlay === `Pari`) {
-        computerPlay = `Dispari`;
+    if (selectedRadioPlay.value === `pari`) {
+        computerPlay = `dispari`;
     } else {
-        computerPlay = `Pari`;
+        computerPlay = `pari`;
     }
     console.log(`Computer gioca: ${computerPlay}`);
 
@@ -108,14 +108,51 @@ submitButtonPlay.addEventListener(`click`, function(event) {
     const selectedUserNumber = document.querySelector(`#select-number-play`)
     console.log(`Il numero scelto dal user è: ${selectedUserNumber.value}`)
     //generate and save a random number by the computer
-    const computerNumber = 
+    const computerNumber = Math.floor(Math.random() * 6);
+    console.log(`Il numero del computer è: ${computerNumber}`)
+    //sum the value input from user to the one random genearated by computer
+    const sumPlay = Number(selectedUserNumber.value) + computerNumber;
+    console.log(sumPlay)
 
+    function pariDispariWinner (result) {
+        if (sumPlay % 2 === 0) {
+            if (computerPlay === `pari`) {
+                return false;
+            } else {
+                return true;
+            }
+        } else {
+            if (computerPlay === `pari`) {
+                return true;
+            } else {
+                return false
+            }
+        }
+    }
+    
+    const resultWinner = pariDispariWinner(sumPlay);
+    if (resultWinner === true) {
+        setTimeout(() => {
+            submitButtonPlay.disabled = false;
+            spinnerPlay.classList.toggle(`d-none`)
+            statusPlayBtn.innerHTML= originalStatusPlay
+            resultWinPlay.classList.remove(`d-none`);
+            resultWinMessage.innerHTML = `You won with: "${selectedUserNumber.value}"`;
+        }, 1500);    
+    }
+    if (resultWinner === false) {
+        setTimeout(() => {
+            submitButtonPlay.disabled = false;
+            spinnerPlay.classList.toggle(`d-none`)
+            statusPlayBtn.innerHTML= originalStatusPlay
+            resultLostPlay.classList.remove(`d-none`);
+            resultLostMessage.innerHTML = `You lost with: "${selectedUserNumber.value}"`;
+        }, 1500);    
+    }
 
+    
 })
 
 
 
-//generate and save a random number by the computer
-//sum the value input from user to the one randome genearated by computer
-//check if the sum result is pari or dispari
 //assign the winner based on the pari-dispari selection (user VS computer)
