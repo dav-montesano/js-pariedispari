@@ -112,7 +112,7 @@ submitButtonPlay.addEventListener(`click`, function(event) {
     console.log(`Il numero del computer è: ${computerNumber}`)
     //sum the value input from user to the one random genearated by computer
     const sumPlay = Number(selectedUserNumber.value) + computerNumber;
-    console.log(sumPlay)
+    console.log(`La somma dei due numeri è: ${sumPlay}`)
 
     function pariDispariWinner (result) {
         if (sumPlay % 2 === 0) {
@@ -137,7 +137,7 @@ submitButtonPlay.addEventListener(`click`, function(event) {
             spinnerPlay.classList.toggle(`d-none`)
             statusPlayBtn.innerHTML= originalStatusPlay
             resultWinPlay.classList.remove(`d-none`);
-            resultWinMessage.innerHTML = `You won with: "${selectedUserNumber.value}"`;
+            resultWinMessage.innerHTML = `You WON!<br>Your number: "${selectedUserNumber.value}".<br> The computer's number: "${computerNumber}".<br> You play: "${selectedRadioPlay.value}". <br> The sum is: "${sumPlay}".`;
         }, 1500);    
     }
     if (resultWinner === false) {
@@ -146,7 +146,7 @@ submitButtonPlay.addEventListener(`click`, function(event) {
             spinnerPlay.classList.toggle(`d-none`)
             statusPlayBtn.innerHTML= originalStatusPlay
             resultLostPlay.classList.remove(`d-none`);
-            resultLostMessage.innerHTML = `You lost with: "${selectedUserNumber.value}"`;
+            resultLostMessage.innerHTML = `You LOST!!<br>Your number: "${selectedUserNumber.value}".<br> The computer's number: "${computerNumber}".<br> You play: "${selectedRadioPlay.value}". <br> The sum is: "${sumPlay}".`;
         }, 1500);    
     }
 
